@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paffio Café — Em Breve</title>
-  <meta name="description" content="Uma nova experiência de café está chegando. Garanta seu acesso exclusivo ao primeiro lote com desconto especial.">
+  <meta name="description" content="Uma nova experiência de café está chegando. Garanta desconto exclusivo no primeiro lote.">
   <meta property="og:title" content="Paffio Café — Em Breve">
   <meta property="og:description" content="Uma nova experiência de café está chegando. Primeiras 500 pessoas com desconto exclusivo.">
   <meta property="og:image" content="assets/images/mockup-both.jpg">
@@ -60,23 +60,19 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --c-black:      #0C0C0C;
-      --c-black-soft: #111111;
-      --c-green:      #1B3A34;
-      --c-green-mid:  #1E4039;
-      --c-cream:      #F4EFE3;
-      --c-cream-60:   rgba(244,239,227,.6);
-      --c-cream-30:   rgba(244,239,227,.3);
-      --c-cream-10:   rgba(244,239,227,.08);
-      --c-gold:       #C9A86B;
-      --c-gold-hi:    #D9BC84;
-      --c-border:     rgba(244,239,227,.1);
-
-      --f-display: 'Aminute', Georgia, serif;
-      --f-body:    'Gotham', system-ui, sans-serif;
-
-      --ease:     cubic-bezier(.4,0,.2,1);
-      --ease-out: cubic-bezier(0,0,.2,1);
+      --c-black:     #0C0C0C;
+      --c-green:     #1B3A34;
+      --c-cream:     #F4EFE3;
+      --c-cream-70:  rgba(244,239,227,.7);
+      --c-cream-40:  rgba(244,239,227,.4);
+      --c-cream-15:  rgba(244,239,227,.08);
+      --c-gold:      #C9A86B;
+      --c-gold-hi:   #D9BC84;
+      --c-border:    rgba(244,239,227,.1);
+      --f-display:   'Aminute', Georgia, serif;
+      --f-body:      'Gotham', system-ui, sans-serif;
+      --ease:        cubic-bezier(.4,0,.2,1);
+      --ease-out:    cubic-bezier(0,0,.2,1);
     }
 
     html { scroll-behavior: smooth; }
@@ -93,46 +89,43 @@
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 28px 48px;
+      z-index: 200;
+      padding: 26px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .nav::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(12,12,12,.8) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(12,12,12,.85) 0%, transparent 100%);
       z-index: -1;
-      pointer-events: none;
     }
-
     .nav-brand {
-      font-family: var(--f-body);
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 7px;
-      text-transform: uppercase;
+      font-family: var(--f-display);
+      font-size: 20px;
       color: var(--c-cream);
       text-decoration: none;
-      opacity: .65;
+      letter-spacing: 2px;
+      opacity: .85;
       transition: opacity .3s;
     }
     .nav-brand:hover { opacity: 1; }
-
     .nav-cta {
-      font-family: var(--f-body);
       font-weight: 400;
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--c-gold);
       text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--f-body);
       transition: opacity .3s;
     }
-    .nav-cta:hover { opacity: .7; }
+    .nav-cta:hover { opacity: .65; }
 
     /* ── HERO ────────────────────────────────────────────── */
     .hero {
@@ -146,104 +139,119 @@
       overflow: hidden;
       text-align: center;
     }
-
-    /* Grain overlay */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 0;
     }
-
-    /* Radial glow */
     .hero::after {
       content: '';
       position: absolute;
-      width: 600px;
-      height: 600px;
+      width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,107,.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,168,107,.07) 0%, transparent 65%);
       top: 50%; left: 50%;
       transform: translate(-50%, -55%);
       pointer-events: none;
-      z-index: 0;
     }
-
     .hero > * { position: relative; z-index: 1; }
 
+    /* ── LOGO (CSS/font-based) ───────────────────────────── */
+    .hero-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1.1s var(--ease-out) .3s forwards;
+    }
+
+    .logo-beans {
+      width: 72px;
+      height: 48px;
+      margin-bottom: 8px;
+    }
+
+    .logo-wordmark {
+      font-family: var(--f-display);
+      font-size: clamp(52px, 10vw, 88px);
+      font-weight: normal;
+      color: var(--c-cream);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .logo-cafe {
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-top: 6px;
+    }
+
+    /* ── HERO COPY ───────────────────────────────────────── */
     .hero-eyebrow {
       font-weight: 300;
       font-size: 10px;
-      letter-spacing: 8px;
+      letter-spacing: 7px;
       text-transform: uppercase;
       color: var(--c-gold);
-      margin-bottom: 48px;
+      margin-bottom: 56px;
       opacity: 0;
-      animation: fadeUp .9s var(--ease-out) .2s forwards;
-    }
-
-    .hero-logo {
-      width: min(260px, 65vw);
-      margin: 0 auto 52px;
-      opacity: 0;
-      animation: fadeUp 1.1s var(--ease-out) .4s forwards;
-    }
-    .hero-logo img {
-      width: 100%;
-      height: auto;
-      mix-blend-mode: lighten;
+      animation: fadeUp .9s var(--ease-out) .1s forwards;
     }
 
     .hero-headline {
       font-family: var(--f-display);
-      font-size: clamp(26px, 4.5vw, 52px);
+      font-size: clamp(24px, 4vw, 50px);
       font-weight: normal;
       color: var(--c-cream);
-      max-width: 680px;
+      max-width: 660px;
       line-height: 1.35;
-      margin: 0 auto 20px;
+      margin: 0 auto 16px;
       opacity: 0;
-      animation: fadeUp 1.1s var(--ease-out) .6s forwards;
+      animation: fadeUp 1.1s var(--ease-out) .55s forwards;
     }
 
     .hero-sub {
       font-weight: 300;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--c-cream-60);
-      margin-bottom: 72px;
+      font-size: 13px;
+      color: var(--c-cream-40);
+      margin-bottom: 64px;
       opacity: 0;
-      animation: fadeUp 1.1s var(--ease-out) .8s forwards;
+      animation: fadeUp 1.1s var(--ease-out) .7s forwards;
+      white-space: nowrap;
+    }
+    @media (max-width: 480px) {
+      .hero-sub { white-space: normal; }
     }
 
     /* ── COUNTDOWN ───────────────────────────────────────── */
     .countdown {
       display: flex;
       align-items: flex-start;
-      gap: 0;
-      margin-bottom: 72px;
+      margin-bottom: 64px;
       opacity: 0;
-      animation: fadeUp 1.1s var(--ease-out) 1s forwards;
+      animation: fadeUp 1.1s var(--ease-out) .85s forwards;
     }
-
     .cd-block {
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 80px;
     }
-
     .cd-num {
       font-family: var(--f-display);
-      font-size: clamp(40px, 9vw, 80px);
+      font-size: clamp(44px, 9vw, 82px);
       font-weight: normal;
       color: var(--c-cream);
       line-height: 1;
-      letter-spacing: -1px;
     }
-
     .cd-label {
       font-weight: 300;
       font-size: 8px;
@@ -252,23 +260,31 @@
       color: var(--c-gold);
       margin-top: 10px;
     }
-
     .cd-sep {
       font-family: var(--f-display);
-      font-size: clamp(32px, 7vw, 64px);
+      font-size: clamp(32px, 7vw, 60px);
       color: var(--c-gold);
-      opacity: .25;
+      opacity: .2;
       line-height: 1;
-      padding: 0 4px;
-      margin-top: 4px;
+      padding: 0 2px;
+      margin-top: 6px;
     }
 
-    /* ── BUTTONS ─────────────────────────────────────────── */
+    /* ── CTA HERO ────────────────────────────────────────── */
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 1.1s var(--ease-out) 1s forwards;
+    }
+
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 17px 44px;
+      gap: 14px;
+      padding: 18px 48px;
       background: var(--c-gold);
       color: var(--c-black);
       font-family: var(--f-body);
@@ -277,9 +293,7 @@
       letter-spacing: 3.5px;
       text-transform: uppercase;
       text-decoration: none;
-      transition: background .3s var(--ease), transform .3s var(--ease);
-      opacity: 0;
-      animation: fadeUp 1.1s var(--ease-out) 1.2s forwards;
+      transition: background .3s var(--ease), transform .25s var(--ease);
       cursor: pointer;
       border: none;
     }
@@ -287,30 +301,15 @@
       background: var(--c-gold-hi);
       transform: translateY(-2px);
     }
-    .btn-primary .arrow {
-      transition: transform .3s var(--ease);
-    }
-    .btn-primary:hover .arrow { transform: translateX(4px); }
+    .btn-primary .arrow { transition: transform .3s var(--ease); }
+    .btn-primary:hover .arrow { transform: translateX(5px); }
 
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 32px;
-      border: 1px solid rgba(201,168,107,.35);
-      color: var(--c-gold);
-      font-family: var(--f-body);
-      font-weight: 400;
+    .cta-urgency {
+      font-weight: 300;
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      text-decoration: none;
-      transition: background .3s, color .3s, border-color .3s;
-    }
-    .btn-ghost:hover {
-      background: var(--c-gold);
-      color: var(--c-black);
-      border-color: var(--c-gold);
+      color: var(--c-cream-40);
     }
 
     /* ── SCROLL HINT ─────────────────────────────────────── */
@@ -326,16 +325,10 @@
       opacity: 0;
       animation: fadeIn 1s var(--ease-out) 2s forwards;
     }
-    .scroll-hint span {
-      font-size: 8px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--c-cream-30);
-    }
     .scroll-line {
       width: 1px;
       height: 44px;
-      background: linear-gradient(to bottom, var(--c-gold), transparent);
+      background: linear-gradient(to bottom, rgba(201,168,107,.5), transparent);
       animation: scrollPulse 2.5s ease-in-out infinite;
     }
 
@@ -353,11 +346,10 @@
     .manifesto::before {
       content: '';
       position: absolute;
-      width: 800px;
-      height: 800px;
+      width: 900px; height: 900px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(201,168,107,.07) 0%, transparent 65%);
-      top: 50%; left: 30%;
+      top: 50%; left: 20%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
@@ -371,17 +363,15 @@
       color: var(--c-gold);
       margin-bottom: 44px;
     }
-
     .manifesto-quote {
       font-family: var(--f-display);
       font-size: clamp(22px, 3.8vw, 46px);
       font-weight: normal;
       color: var(--c-cream);
-      max-width: 780px;
+      max-width: 760px;
       line-height: 1.45;
       margin-bottom: 48px;
     }
-
     .manifesto-rule {
       width: 36px;
       height: 1px;
@@ -389,26 +379,23 @@
       opacity: .4;
       margin-bottom: 40px;
     }
-
     .manifesto-body {
       font-weight: 300;
       font-size: 14px;
       line-height: 1.95;
-      color: var(--c-cream-60);
-      max-width: 560px;
+      color: var(--c-cream-70);
+      max-width: 540px;
     }
 
     /* ── PRODUTOS ────────────────────────────────────────── */
     .produtos {
-      background: var(--c-black-soft, #111);
+      background: #111111;
       padding: 128px 48px;
     }
-
     .section-header {
       text-align: center;
       margin-bottom: 80px;
     }
-
     .section-title {
       font-family: var(--f-display);
       font-size: clamp(26px, 3.8vw, 46px);
@@ -416,7 +403,6 @@
       color: var(--c-cream);
       margin-top: 12px;
     }
-
     .produtos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -424,12 +410,7 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
-    .produto-card {
-      display: flex;
-      flex-direction: column;
-    }
-
+    .produto-card { display: flex; flex-direction: column; }
     .produto-img {
       aspect-ratio: 3/4;
       overflow: hidden;
@@ -443,9 +424,7 @@
       transition: transform .9s var(--ease);
       filter: brightness(.88);
     }
-    .produto-card:hover .produto-img img {
-      transform: scale(1.05);
-    }
+    .produto-card:hover .produto-img img { transform: scale(1.05); }
     .produto-img-badge {
       position: absolute;
       top: 18px; right: 18px;
@@ -457,7 +436,6 @@
       text-transform: uppercase;
       padding: 6px 14px;
     }
-
     .produto-tag {
       font-weight: 300;
       font-size: 9px;
@@ -466,7 +444,6 @@
       color: var(--c-gold);
       margin-bottom: 10px;
     }
-
     .produto-nome {
       font-family: var(--f-display);
       font-size: 26px;
@@ -474,50 +451,15 @@
       color: var(--c-cream);
       margin-bottom: 12px;
     }
-
     .produto-desc {
       font-weight: 300;
       font-size: 13px;
       line-height: 1.85;
-      color: var(--c-cream-60);
+      color: var(--c-cream-70);
     }
 
-    /* Feature strip */
-    .feature-strip {
-      display: flex;
-      gap: 0;
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
-      margin-top: 80px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .feature-item {
-      flex: 1;
-      padding: 32px 24px;
-      text-align: center;
-      border-right: 1px solid var(--c-border);
-    }
-    .feature-item:last-child { border-right: none; }
-
-    .feature-num {
-      font-family: var(--f-display);
-      font-size: 36px;
-      color: var(--c-gold);
-      display: block;
-      margin-bottom: 4px;
-    }
-    .feature-label {
-      font-weight: 300;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--c-cream-60);
-    }
-
-    /* ── FORM SECTION ────────────────────────────────────── */
-    .form-section {
+    /* ── BOTTOM CTA SECTION ──────────────────────────────── */
+    .bottom-cta {
       background: var(--c-black);
       padding: 128px 48px;
       display: flex;
@@ -527,150 +469,38 @@
       position: relative;
       overflow: hidden;
     }
-    .form-section::before {
+    .bottom-cta::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,107,.05) 0%, transparent 55%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,107,.06) 0%, transparent 55%);
       pointer-events: none;
     }
-    .form-section > * { position: relative; z-index: 1; }
+    .bottom-cta > * { position: relative; z-index: 1; }
 
-    .form-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 22px;
-      border: 1px solid rgba(201,168,107,.25);
-      font-weight: 300;
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 44px;
+    .bottom-cta-rule {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, transparent, var(--c-gold));
+      opacity: .4;
+      margin: 0 auto 56px;
     }
-
-    .form-title {
+    .bottom-cta-title {
       font-family: var(--f-display);
-      font-size: clamp(28px, 4.5vw, 52px);
+      font-size: clamp(28px, 4.5vw, 56px);
       font-weight: normal;
       color: var(--c-cream);
-      max-width: 560px;
+      max-width: 600px;
       line-height: 1.3;
       margin-bottom: 16px;
     }
-
-    .form-sub {
+    .bottom-cta-sub {
       font-weight: 300;
       font-size: 13px;
       line-height: 1.8;
-      color: var(--c-cream-60);
-      max-width: 400px;
-      margin-bottom: 56px;
-    }
-
-    /* ── FORM ────────────────────────────────────────────── */
-    #lead-form {
-      width: 100%;
-      max-width: 460px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      text-align: left;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .field label {
-      font-weight: 400;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--c-gold);
-    }
-
-    .field input {
-      width: 100%;
-      background: var(--c-cream-10);
-      border: 1px solid rgba(244,239,227,.1);
-      padding: 16px 20px;
-      font-family: var(--f-body);
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--c-cream);
-      outline: none;
-      transition: border-color .3s var(--ease), background .3s var(--ease);
-      border-radius: 0;
-      -webkit-appearance: none;
-    }
-    .field input::placeholder { color: var(--c-cream-30); }
-    .field input:focus {
-      border-color: rgba(201,168,107,.45);
-      background: rgba(244,239,227,.06);
-    }
-
-    .btn-submit {
-      width: 100%;
-      margin-top: 16px;
-      padding: 18px 40px;
-      background: var(--c-gold);
-      border: none;
-      cursor: pointer;
-      font-family: var(--f-body);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      color: var(--c-black);
-      transition: background .3s var(--ease), transform .3s var(--ease);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .btn-submit:hover {
-      background: var(--c-gold-hi);
-      transform: translateY(-2px);
-    }
-    .btn-submit:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-legal {
-      font-weight: 300;
-      font-size: 10px;
-      color: rgba(244,239,227,.22);
-      text-align: center;
-      margin-top: 20px;
-      line-height: 1.7;
-    }
-
-    /* Feedback states */
-    .form-msg {
-      display: none;
-      padding: 14px 20px;
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      text-align: center;
-      margin-top: 12px;
-    }
-    .form-msg.success {
-      display: block;
-      color: var(--c-gold);
-      border: 1px solid rgba(201,168,107,.2);
-    }
-    .form-msg.error {
-      display: block;
-      color: #e07a7a;
-      border: 1px solid rgba(224,122,122,.2);
+      color: var(--c-cream-40);
+      max-width: 380px;
+      margin-bottom: 52px;
     }
 
     /* ── FOOTER ──────────────────────────────────────────── */
@@ -683,34 +513,178 @@
       align-items: center;
       gap: 20px;
     }
-
     .footer-logo {
       font-family: var(--f-display);
       font-size: 22px;
       color: var(--c-gold);
-      letter-spacing: 3px;
+      letter-spacing: 2px;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-    }
+    .footer-links { display: flex; gap: 32px; }
     .footer-links a {
       font-weight: 300;
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--c-cream-60);
+      color: var(--c-cream-40);
       text-decoration: none;
       transition: color .3s;
     }
     .footer-links a:hover { color: var(--c-gold); }
-
     .footer-copy {
       font-weight: 300;
       font-size: 10px;
       color: rgba(244,239,227,.18);
       letter-spacing: 1px;
+    }
+
+    /* ── MODAL ───────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: rgba(12,12,12,.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s var(--ease);
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-box {
+      background: #161616;
+      border: 1px solid rgba(201,168,107,.2);
+      width: 100%;
+      max-width: 480px;
+      padding: 52px 48px 44px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform .4s var(--ease);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--c-cream-40);
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color .2s;
+      font-family: var(--f-body);
+    }
+    .modal-close:hover { color: var(--c-cream); }
+
+    .modal-eyebrow {
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 20px;
+    }
+    .modal-title {
+      font-family: var(--f-display);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: normal;
+      color: var(--c-cream);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .modal-sub {
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--c-cream-40);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    /* ── FORM ────────────────────────────────────────────── */
+    #lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .field label {
+      font-weight: 400;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--c-gold);
+    }
+    .field input {
+      width: 100%;
+      background: rgba(244,239,227,.04);
+      border: 1px solid rgba(244,239,227,.1);
+      padding: 15px 18px;
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--c-cream);
+      outline: none;
+      transition: border-color .3s, background .3s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .field input::placeholder { color: rgba(244,239,227,.25); }
+    .field input:focus {
+      border-color: rgba(201,168,107,.4);
+      background: rgba(244,239,227,.06);
+    }
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 17px 32px;
+      background: var(--c-gold);
+      border: none;
+      cursor: pointer;
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--c-black);
+      transition: background .3s, transform .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-submit:hover { background: var(--c-gold-hi); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    .form-legal {
+      font-weight: 300;
+      font-size: 10px;
+      color: rgba(244,239,227,.2);
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.7;
+    }
+    .form-msg {
+      display: none;
+      padding: 12px 18px;
+      font-size: 12px;
+      font-weight: 300;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .form-msg.error {
+      display: block;
+      color: #e07a7a;
+      border: 1px solid rgba(224,122,122,.2);
     }
 
     /* ── ANIMATIONS ──────────────────────────────────────── */
@@ -723,8 +697,8 @@
       to   { opacity: 1; }
     }
     @keyframes scrollPulse {
-      0%, 100% { opacity: .8; }
-      50%       { opacity: .2; }
+      0%, 100% { opacity: .6; }
+      50%       { opacity: .15; }
     }
 
     .reveal {
@@ -732,37 +706,25 @@
       transform: translateY(36px);
       transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
     }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-d1 { transition-delay: .05s; }
-    .reveal-d2 { transition-delay: .15s; }
-    .reveal-d3 { transition-delay: .25s; }
-    .reveal-d4 { transition-delay: .35s; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .18s; }
+    .reveal-d3 { transition-delay: .28s; }
 
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 768px) {
       .nav { padding: 20px 24px; }
       .nav-cta { display: none; }
-
       .hero { padding: 110px 24px 100px; }
-
       .countdown { gap: 0; }
       .cd-block { min-width: 64px; }
-      .cd-sep { padding: 0 2px; }
-
+      .cd-sep { padding: 0 1px; }
       .manifesto { padding: 88px 24px; }
-
       .produtos { padding: 88px 24px; }
-      .feature-strip { flex-direction: column; }
-      .feature-item { border-right: none; border-bottom: 1px solid var(--c-border); }
-      .feature-item:last-child { border-bottom: none; }
-
-      .form-section { padding: 88px 24px; }
-
+      .bottom-cta { padding: 88px 24px; }
       footer { padding: 44px 24px; }
       .footer-links { flex-direction: column; align-items: center; gap: 16px; }
+      .modal-box { padding: 44px 28px 36px; }
     }
   </style>
 </head>
@@ -770,17 +732,43 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="#" class="nav-brand">Paffio Café</a>
-    <a href="#lista" class="nav-cta">Quero meu desconto</a>
+    <a href="#" class="nav-brand">paffio</a>
+    <button class="nav-cta open-modal">Quero meu desconto</button>
   </nav>
 
   <!-- ═══ HERO ═══════════════════════════════════════════ -->
-  <section class="hero" id="inicio">
+  <section class="hero">
 
     <p class="hero-eyebrow">Pré-lançamento · 18 de julho de 2026</p>
 
+    <!-- Logo CSS/font -->
     <div class="hero-logo">
-      <img src="assets/images/logo-dark.jpg" alt="Paffio Café">
+      <svg class="logo-beans" viewBox="0 0 120 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bean left -->
+        <g transform="rotate(-22, 40, 38)">
+          <ellipse cx="40" cy="38" rx="22" ry="13" fill="#C9A86B" opacity=".75"/>
+          <line x1="40" y1="26" x2="40" y2="50" stroke="#0C0C0C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="33" y1="29" x2="28" y2="34" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="33" y1="34" x2="26" y2="38" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="33" y1="39" x2="28" y2="43" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="47" y1="29" x2="52" y2="34" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="47" y1="34" x2="54" y2="38" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="47" y1="39" x2="52" y2="43" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+        </g>
+        <!-- Bean right -->
+        <g transform="rotate(22, 80, 38)">
+          <ellipse cx="80" cy="38" rx="22" ry="13" fill="#C9A86B" opacity=".9"/>
+          <line x1="80" y1="26" x2="80" y2="50" stroke="#0C0C0C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="73" y1="29" x2="68" y2="34" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="73" y1="34" x2="66" y2="38" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="73" y1="39" x2="68" y2="43" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="87" y1="29" x2="92" y2="34" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="87" y1="34" x2="94" y2="38" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <line x1="87" y1="39" x2="92" y2="43" stroke="#0C0C0C" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+        </g>
+      </svg>
+      <p class="logo-wordmark">paffio</p>
+      <p class="logo-cafe">C A F É</p>
     </div>
 
     <h1 class="hero-headline">
@@ -788,10 +776,9 @@
     </h1>
 
     <p class="hero-sub">
-      Lançamento exclusivo &nbsp;·&nbsp; Primeiras 500 pessoas com desconto especial
+      Lançamento exclusivo · 18 de julho · Sudeste
     </p>
 
-    <!-- Countdown -->
     <div class="countdown" id="countdown">
       <div class="cd-block">
         <span class="cd-num" id="cd-days">00</span>
@@ -814,16 +801,18 @@
       </div>
     </div>
 
-    <a href="#lista" class="btn-primary">
-      Garantir meu acesso
-      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <div class="hero-cta-wrap">
+      <button class="btn-primary open-modal">
+        Quero meu desconto exclusivo
+        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="cta-urgency">Apenas 500 vagas disponíveis</p>
+    </div>
 
     <div class="scroll-hint">
       <div class="scroll-line"></div>
-      <span>Rolar</span>
     </div>
 
   </section>
@@ -831,28 +820,22 @@
   <!-- ═══ MANIFESTO ═══════════════════════════════════════ -->
   <section class="manifesto">
     <p class="section-eyebrow reveal">Nossa história</p>
-
     <blockquote class="manifesto-quote reveal reveal-d1">
       "Não existe para vender café,<br>mas sim uma experiência."
     </blockquote>
-
     <div class="manifesto-rule reveal reveal-d2"></div>
-
     <p class="manifesto-body reveal reveal-d3">
       A Paffio não nasceu de uma estratégia de mercado, mas de uma história real — construída a partir de relações, conversas sinceras e da vontade de criar algo com significado. Tudo na Paffio é feito com intenção. Somos uma marca gourmet, mas sem excessos. Sofisticada, mas próxima. Brasileira na essência e aberta ao mundo.
     </p>
   </section>
 
   <!-- ═══ PRODUTOS ═══════════════════════════════════════ -->
-  <section class="produtos" id="produtos">
-
+  <section class="produtos">
     <div class="section-header">
       <p class="section-eyebrow reveal">Primeiro lote</p>
       <h2 class="section-title reveal reveal-d1">Dois cafés, uma experiência</h2>
     </div>
-
     <div class="produtos-grid">
-
       <div class="produto-card reveal reveal-d1">
         <div class="produto-img">
           <img src="assets/images/embalagem-classico.jpg" alt="Café Paffio Clássico">
@@ -862,7 +845,6 @@
         <h3 class="produto-nome">Café Paffio Clássico</h3>
         <p class="produto-desc">Para quem aprecia um café de verdade, preparado com atenção desde a escolha do grão até o momento em que chega à xícara.</p>
       </div>
-
       <div class="produto-card reveal reveal-d2">
         <div class="produto-img">
           <img src="assets/images/embalagem-origem.jpg" alt="Paffio Origem">
@@ -872,78 +854,27 @@
         <h3 class="produto-nome">Paffio Origem</h3>
         <p class="produto-desc">Em grãos especiais, para os que buscam explorar o espectro completo do sabor e celebrar cada etapa do preparo.</p>
       </div>
-
     </div>
-
-    <div class="feature-strip reveal">
-      <div class="feature-item">
-        <span class="feature-num">500</span>
-        <span class="feature-label">Unidades por produto</span>
-      </div>
-      <div class="feature-item">
-        <span class="feature-num">500</span>
-        <span class="feature-label">Pessoas com desconto</span>
-      </div>
-      <div class="feature-item">
-        <span class="feature-num">18/07</span>
-        <span class="feature-label">Data de lançamento</span>
-      </div>
-    </div>
-
   </section>
 
-  <!-- ═══ FORM ════════════════════════════════════════════ -->
-  <section class="form-section" id="lista">
-
-    <div class="form-badge reveal">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1"/>
-        <path d="M6 3.5V6.5L8 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-      </svg>
-      Apenas 500 vagas com desconto
-    </div>
-
-    <h2 class="form-title reveal reveal-d1">
+  <!-- ═══ BOTTOM CTA ══════════════════════════════════════ -->
+  <section class="bottom-cta">
+    <div class="bottom-cta-rule reveal"></div>
+    <h2 class="bottom-cta-title reveal reveal-d1">
       Garanta o seu com desconto exclusivo
     </h2>
-
-    <p class="form-sub reveal reveal-d2">
-      Seja um dos primeiros a experimentar a Paffio. Cadastre-se e receba uma oferta especial no dia do lançamento.
+    <p class="bottom-cta-sub reveal reveal-d2">
+      Primeiras 500 pessoas recebem uma oferta especial no dia do lançamento.
     </p>
-
-    <form id="lead-form" action="https://formspree.io/f/FORM_ID_AQUI" method="POST" novalidate>
-      <input type="hidden" name="_subject" value="Novo Lead — Paffio Café Pré-lançamento">
-
-      <div class="field reveal reveal-d2">
-        <label for="name">Nome completo</label>
-        <input type="text" id="name" name="name" placeholder="Seu nome" required autocomplete="name">
-      </div>
-
-      <div class="field reveal reveal-d3">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email">
-      </div>
-
-      <div class="field reveal reveal-d4">
-        <label for="phone">WhatsApp</label>
-        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" autocomplete="tel">
-      </div>
-
-      <button type="submit" class="btn-submit reveal">
-        <span class="btn-text">Quero participar do lançamento</span>
+    <div class="reveal reveal-d3" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <button class="btn-primary open-modal">
+        Quero participar do lançamento
         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-
-      <div class="form-msg" id="form-msg"></div>
-
-      <p class="form-legal">
-        Ao se cadastrar, você concorda em receber comunicações da Paffio Café.<br>
-        Seus dados estão protegidos e não serão compartilhados.
-      </p>
-    </form>
-
+      <p class="cta-urgency">18 de julho · Apenas 500 vagas</p>
+    </div>
   </section>
 
   <!-- ═══ FOOTER ══════════════════════════════════════════ -->
@@ -956,13 +887,56 @@
     <p class="footer-copy">© 2025 Paffio Café. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- ═══ MODAL ════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
+
+      <p class="modal-eyebrow">Desconto exclusivo</p>
+      <h2 class="modal-title" id="modal-title">Seja um dos primeiros.</h2>
+      <p class="modal-sub">Primeiras 500 pessoas recebem oferta especial no lançamento — 18 de julho.</p>
+
+      <form id="lead-form" action="https://formspree.io/f/FORM_ID_AQUI" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Novo Lead — Paffio Café Pré-lançamento">
+
+        <div class="field">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" name="name" placeholder="Seu nome" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label for="phone">WhatsApp</label>
+          <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" autocomplete="tel">
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span class="btn-text">Garantir meu desconto</span>
+          <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="form-msg" id="form-msg"></div>
+
+        <p class="form-legal">
+          Seus dados estão protegidos e não serão compartilhados.
+        </p>
+      </form>
+    </div>
+
+  </div>
+
   <script>
     /* ── COUNTDOWN ─────────────────────────────────────── */
     (function () {
       const LAUNCH = new Date('2026-07-18T00:00:00-03:00').getTime();
-
       function pad(n) { return String(n).padStart(2, '0'); }
-
       function tick() {
         const diff = LAUNCH - Date.now();
         if (diff <= 0) {
@@ -986,8 +960,36 @@
     /* ── SCROLL REVEAL ─────────────────────────────────── */
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── MODAL ─────────────────────────────────────────── */
+    const modal    = document.getElementById('modal');
+    const closeBtn = document.getElementById('modal-close');
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('name').focus(), 300);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.open-modal').forEach(btn => {
+      btn.addEventListener('click', openModal);
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
 
     /* ── FORM ──────────────────────────────────────────── */
     const form   = document.getElementById('lead-form');
@@ -997,38 +999,29 @@
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
-
-      /* Basic validation */
       const name  = form.name.value.trim();
       const email = form.email.value.trim();
       if (!name || !email) {
         showMsg('Por favor, preencha nome e e-mail.', 'error');
         return;
       }
-
-      /* Loading state */
       btn.disabled = true;
       btnTxt.textContent = 'Enviando…';
-
-      /* Fire Meta Pixel Lead event */
       if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-
       try {
         const res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
           headers: { 'Accept': 'application/json' }
         });
-
         if (res.ok) {
-          /* Redirect to thank you page */
           window.location.href = 'obrigado.html';
         } else {
           throw new Error('server');
         }
       } catch {
         btn.disabled = false;
-        btnTxt.textContent = 'Quero participar do lançamento';
+        btnTxt.textContent = 'Garantir meu desconto';
         showMsg('Algo deu errado. Tente novamente.', 'error');
       }
     });
@@ -1039,8 +1032,7 @@
     }
 
     /* ── PHONE MASK ────────────────────────────────────── */
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function () {
+    document.getElementById('phone').addEventListener('input', function () {
       let v = this.value.replace(/\D/g, '').slice(0, 11);
       if (v.length >= 7) {
         v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
