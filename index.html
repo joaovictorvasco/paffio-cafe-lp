@@ -724,7 +724,26 @@
       .bottom-cta { padding: 88px 24px; }
       footer { padding: 44px 24px; }
       .footer-links { flex-direction: column; align-items: center; gap: 16px; }
-      .modal-box { padding: 44px 28px 36px; }
+      .modal-box { padding: 44px 24px 36px; }
+
+      /* letter-spacing reduction — evita quebra em viewport estreita */
+      .hero-eyebrow { letter-spacing: 3px; font-size: 9px; }
+      .btn-primary {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        letter-spacing: 0.5px;
+        font-size: 10px;
+        padding: 18px 20px;
+      }
+      .cta-urgency { letter-spacing: 1px; font-size: 9px; }
+      .modal-eyebrow { letter-spacing: 2px; font-size: 9px; }
+      .btn-submit { letter-spacing: 1.5px; }
+      .cd-label { letter-spacing: 2px; }
+
+      /* produto card: empilha verticalmente */
+      .produto-img { height: 240px; }
+      .produto-info { padding: 28px 24px 36px; }
     }
   </style>
 </head>
@@ -872,7 +891,7 @@
     </p>
     <div class="reveal reveal-d3" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
       <button class="btn-primary open-modal">
-        Quero participar do lançamento
+        Reservar minha vaga com desconto
         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
