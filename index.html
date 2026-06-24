@@ -6,7 +6,7 @@
   <title>Paffio Café — Em Breve</title>
   <meta name="description" content="Uma nova experiência de café está chegando. Garanta desconto exclusivo no primeiro lote.">
   <meta property="og:title" content="Paffio Café — Em Breve">
-  <meta property="og:description" content="Uma nova experiência de café está chegando. Primeiras 500 pessoas com desconto exclusivo.">
+  <meta property="og:description" content="Uma nova experiência de café está chegando. Primeiras 200 pessoas com desconto exclusivo.">
   <meta property="og:image" content="assets/images/mockup-both.jpg">
 
   <!-- Meta Pixel Code -->
@@ -421,10 +421,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--pos, center);
+      transform: scale(var(--z, 1));
       transition: transform .9s var(--ease);
       filter: brightness(.88);
     }
-    .produto-card:hover .produto-img img { transform: scale(1.05); }
+    .produto-card:hover .produto-img img { transform: scale(calc(var(--z, 1) * 1.05)); }
     .produto-img-badge {
       position: absolute;
       top: 18px; right: 18px;
@@ -752,13 +754,13 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="#" class="nav-brand">paffio</a>
-    <button class="nav-cta open-modal">Reservar minha vaga</button>
+    <button class="nav-cta open-modal">Garantir meu desconto</button>
   </nav>
 
   <!-- ═══ HERO ═══════════════════════════════════════════ -->
   <section class="hero">
 
-    <p class="hero-eyebrow">Pré-lançamento · 18 de julho</p>
+    <p class="hero-eyebrow">Lançamento · 18 de julho</p>
 
     <!-- Logo CSS/font -->
     <div class="hero-logo">
@@ -795,7 +797,7 @@
     </h1>
 
     <p class="hero-sub">
-      18 de julho. Primeiras 500 pessoas recebem desconto exclusivo no lançamento.
+      18 de julho. Primeiras 200 pessoas recebem desconto exclusivo no lançamento.
     </p>
 
     <div class="countdown" id="countdown">
@@ -822,12 +824,12 @@
 
     <div class="hero-cta-wrap">
       <button class="btn-primary open-modal">
-        Reservar minha vaga com desconto
+        Garantir meu desconto
         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <p class="cta-urgency">500 vagas. Depois disso, preço cheio.</p>
+      <p class="cta-urgency">Apenas 200 cupons. Depois disso, preço cheio.</p>
     </div>
 
     <div class="scroll-hint">
@@ -860,21 +862,21 @@
     </div>
     <div class="produtos-grid">
       <div class="produto-card reveal reveal-d1">
-        <div class="produto-img">
-          <img src="assets/images/embalagem-classico.jpg" alt="Café Paffio Clássico">
+        <div class="produto-img" style="--z:1.22; --pos:center 58%;">
+          <img src="assets/images/embalagem-classico.jpg" alt="Café Clássico">
           <span class="produto-img-badge">Gourmet Moído</span>
         </div>
         <p class="produto-tag">Clássico</p>
-        <h3 class="produto-nome">Café Paffio Clássico</h3>
+        <h3 class="produto-nome">Café Clássico</h3>
         <p class="produto-desc">Gourmet moído, 100% arábica. Torra média. Para quem quer o melhor café sem precisar de moedor — só da água quente e do tempo certo.</p>
       </div>
       <div class="produto-card reveal reveal-d2">
         <div class="produto-img">
-          <img src="assets/images/embalagem-origem.jpg" alt="Paffio Origem">
+          <img src="assets/images/embalagem-origem.jpg" alt="Café Origem">
           <span class="produto-img-badge">Grãos Especiais</span>
         </div>
         <p class="produto-tag">Origem</p>
-        <h3 class="produto-nome">Paffio Origem</h3>
+        <h3 class="produto-nome">Café Origem</h3>
         <p class="produto-desc">Em grãos especiais, 100% arábica. Torra suave, notas de caramelo, nozes e chocolate meio amargo. Para quem quer controle total — do grão ao preparo.</p>
       </div>
     </div>
@@ -884,19 +886,19 @@
   <section class="bottom-cta">
     <div class="bottom-cta-rule reveal"></div>
     <h2 class="bottom-cta-title reveal reveal-d1">
-      Primeiro lote. 500 vagas. Desconto exclusivo.
+      Primeiro lote. 200 cupons. Desconto exclusivo.
     </h2>
     <p class="bottom-cta-sub reveal reveal-d2">
-      As primeiras 500 pessoas cadastradas recebem uma oferta que não se repete depois do lançamento.
+      As primeiras 200 pessoas cadastradas recebem uma oferta que não se repete depois do lançamento.
     </p>
     <div class="reveal reveal-d3" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
       <button class="btn-primary open-modal">
-        Reservar minha vaga com desconto
+        Garantir meu desconto
         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <p class="cta-urgency">18 de julho · 500 vagas · Depois disso, preço cheio.</p>
+      <p class="cta-urgency">18 de julho · 200 cupons · Depois disso, preço cheio.</p>
     </div>
   </section>
 
@@ -916,12 +918,12 @@
     <div class="modal-box">
       <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
 
-      <p class="modal-eyebrow">Oferta de pré-lançamento</p>
+      <p class="modal-eyebrow">Oferta de lançamento</p>
       <h2 class="modal-title" id="modal-title">Garanta o desconto exclusivo.</h2>
-      <p class="modal-sub">500 vagas. Lançamento 18 de julho. Depois disso, preço cheio.</p>
+      <p class="modal-sub">200 cupons. Lançamento 18 de julho. Depois disso, preço cheio.</p>
 
       <form id="lead-form" action="https://formspree.io/f/FORM_ID_AQUI" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="Novo Lead — Paffio Café Pré-lançamento">
+        <input type="hidden" name="_subject" value="Novo Lead — Paffio Café Lançamento">
 
         <div class="field">
           <label for="name">Nome completo</label>
@@ -939,7 +941,7 @@
         </div>
 
         <button type="submit" class="btn-submit">
-          <span class="btn-text">Reservar minha vaga</span>
+          <span class="btn-text">Garantir meu desconto</span>
           <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none">
             <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
