@@ -847,9 +847,9 @@
     <div class="manifesto-rule reveal reveal-d2"></div>
     <p class="manifesto-body reveal reveal-d3">
       A Paffio não nasceu de uma estratégia de mercado.<br>
-      Nasceu de conversas reais, de relações e da vontade de criar algo com significado.<br><br>
-      Tudo aqui é feito com intenção — desde a escolha do grão até o nome da marca. Paffio é uma palavra única, criada especialmente pra soar bem, ser fácil de dizer e carregar sentimento. Ela guarda as iniciais e a história de quem está por trás.<br><br>
-      Gourmet sem excessos. Sofisticada, mas próxima.<br>
+      Nasceu de conversas reais e da vontade de criar algo com significado.<br><br>
+      Tudo aqui é feito com intenção, da escolha do grão ao nome da marca. Paffio é uma palavra inventada: fácil de dizer, boa de ouvir. Guarda as iniciais e a história de quem está por trás.<br><br>
+      Gourmet sem excesso. Sofisticada, mas próxima.<br>
       Brasileira na essência, aberta ao mundo.
     </p>
   </section>
@@ -922,8 +922,7 @@
       <h2 class="modal-title" id="modal-title">Garanta o desconto exclusivo.</h2>
       <p class="modal-sub">200 cupons. Lançamento 18 de julho. Depois disso, preço cheio.</p>
 
-      <form id="lead-form" action="https://formspree.io/f/FORM_ID_AQUI" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="Novo Lead — Paffio Café Lançamento">
+      <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLScPAPgCL7JwrCJQ2p9J3pKji_3BNr1Vv6uNbV_0oMnJe0nlDw/formResponse" method="POST" novalidate>
 
         <div class="field">
           <label for="name">Nome completo</label>
@@ -1016,16 +1015,24 @@
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
 
-    /* ── FORM ──────────────────────────────────────────── */
+    /* ── FORM (Google Forms) ───────────────────────────── */
     const form   = document.getElementById('lead-form');
     const msg    = document.getElementById('form-msg');
     const btn    = form.querySelector('.btn-submit');
     const btnTxt = form.querySelector('.btn-text');
 
+    // Mapeamento campo do site -> entry ID do Google Forms
+    const GFORM_ENTRIES = {
+      name:  'entry.369207244',   // Nome completo
+      email: 'entry.91475990',    // E-mail
+      phone: 'entry.1856563726'   // WhatsApp
+    };
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const name  = form.name.value.trim();
       const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
       if (!name || !email) {
         showMsg('Por favor, preencha nome e e-mail.', 'error');
         return;
@@ -1033,17 +1040,22 @@
       btn.disabled = true;
       btnTxt.textContent = 'Enviando…';
       if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
+      const params = new URLSearchParams();
+      params.append(GFORM_ENTRIES.name,  name);
+      params.append(GFORM_ENTRIES.email, email);
+      params.append(GFORM_ENTRIES.phone, phone);
+
       try {
-        const res = await fetch(form.action, {
+        // Google Forms não envia CORS: usamos no-cors (resposta opaca)
+        // e tratamos o envio como concluído quando o fetch resolve.
+        await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
         });
-        if (res.ok) {
-          window.location.href = 'obrigado.html';
-        } else {
-          throw new Error('server');
-        }
+        window.location.href = 'obrigado.html';
       } catch {
         btn.disabled = false;
         btnTxt.textContent = 'Garantir meu desconto';
